@@ -1,0 +1,71 @@
+#topBar{
+    font-family: 'Babylonica';font-size: 25px;
+}
+
+#down {
+    margin-top: 10rem;
+}
+
+#pic1 {
+    width: 450px;
+    height: 450px;
+}
+
+#pic1:hover {
+    transform: translateX(20px);
+    transform: translateY(20px);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #welcome {
+    animation: fadeInUp 5s ease-out;
+  }
+  #welcome {
+    margin-top: 14rem;
+  }
+h1 {
+    font-family: 'Sofia';font-size: 55px;
+    font-size: xx-large;
+    font-weight: 900;
+}
+
+body {
+    padding: auto;
+    background-color: antiquewhite;
+
+}
+
+#about {
+    margin-top: 5rem;
+}
+#about2 {
+    margin-top: 5rem;
+}
+
+.col-4 {
+    border-right: solid black;
+}
+
+#aboutPic {
+    border: solid gray;
+    border-radius: 50%;
+}
