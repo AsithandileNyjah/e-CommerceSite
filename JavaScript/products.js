@@ -21,7 +21,7 @@ display.innerHTML = products.map(function(item, index){
             <h5 class="card-title">${item.name}</h5>
             <p class="card-text" style="height: 10rem">${item.description}</p>
             <a class="btn btn-success">R${item.price}</a>
-            <a href="#" value='${index}' class="btn btn-primary" addToCart>Add to Cart</a>
+            <a href="#" class="btn btn-primary" data-add-to-cart="${index}">Add to Cart</a>
             </div>
             </div>
         </div>
@@ -34,8 +34,8 @@ function addToCart(index){
     localStorage.setItem('cart', JSON.stringify(cart))
 }
 display.addEventListener('click', function(){
-    if(event.target.hasAttribute('addToCart')){
-        addToCart(event.target.value)
+    if (event.target.hasAttribute('data-add-to-cart')) {
+        addToCart(event.target.getAttribute('data-add-to-cart'));
     }
 })
 
@@ -109,4 +109,12 @@ searchBTN.addEventListener('click', function(event){
         console.log(productNotFound);
         display2.innerHTML = productNotFound;
     }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // getting the spinner element
+    document.querySelector('[mySpinner]').style.display = 'none';
+    setTimeout(function () {
+        document.querySelector('[mySpinner]').style.display = 'block';
+    }, 1500);
 });

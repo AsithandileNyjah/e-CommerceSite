@@ -6,6 +6,7 @@ function Product(name, description, price, url){
     this.name = name
     this.description = description
     this.price = price
+    this.quantity = 1
     this.url = url
 }
 
@@ -18,7 +19,7 @@ let product3 = new Product('Lavender Bath Salts', 'Made with lavender extract, s
 
 let product4 = new Product('Body Oil', 'Made with Jojoba, sweet almond oil, grapeseed oil and vitamin E oil. Rich in antioxidants and anti-inflammatory properties leaving your skin nourished and revitalised.', 275, 'https://i.postimg.cc/DZ6YVYRd/Whats-App-Image-2023-12-04-at-10-18-42-1-removebg-preview.png')
 
-let product5 = new Product('Citrus Bath Salts', 'Citrus bath salts made from lemon and orange extract, infused with orange essential oil with anti-inflammatory properties and antiseptic properties that help with the healing of would', 415, 'https://i.postimg.cc/NfN0psMp/Whats-App-Image-2023-12-04-at-10-18-42-2-removebg-preview.png')
+let product5 = new Product('Citrus Bath Salts', 'Citrus bath salts made from lemon and orange extract, infused with orange essential oil with anti-inflammatory properties and antiseptic properties that help with the healing of would', 415,  'https://i.postimg.cc/NfN0psMp/Whats-App-Image-2023-12-04-at-10-18-42-2-removebg-preview.png')
 
 // pushing products to the empty array products
 products.push(product1, product2, product3, product4, product5)
@@ -43,6 +44,7 @@ function show (){
             <td id="line">${item.name}</td>
             <td id="line">R${item.price}</td>
             <td id="line">${item.description}</td>
+            <td id="line">${item.quantity}</td>
             <td id="line"> <img class="tableImg" src=${item.url}/> </td>
             <td id="line"><button id="editBTN">Edit</button></td>
             <td id="line"><button class="delBTN">Delete</button></td>
@@ -74,9 +76,23 @@ display.addEventListener('click', function(){
 })
 
 
+
+
+
 // creating a function that will accept values from input to push into the array of products
 
-let name = document.querySelector('[namePro]')
-let price = document.querySelector('[price]')
-let description = document.querySelector('[description]')
-let image = document.querySelector('[image]')
+let addNewBTN = document.querySelector('[addItems]')
+addNewBTN.addEventListener('click', createProduct);
+
+function createProduct() {
+    let name = document.querySelector('[namePro]').value;
+    let price = document.querySelector('[price]').value;
+    let description = document.querySelector('[description]').value;
+    let url = document.querySelector('[image]').value;
+
+    let newProduct = new Product(name, price, description, url);
+
+    products.push(newProduct);
+    storedProducts();
+    show();
+}
