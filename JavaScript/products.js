@@ -26,7 +26,7 @@ display.innerHTML = products.map(function(item, index){
             </div>
         </div>
     `
-}).join('')
+}).join('');
 
 // function to add products to cart
 function addToCart(index){
@@ -73,7 +73,8 @@ function sortProductsByPrice() {
                 </div>
             </div>
         `;
-    }).join('');
+    }).join(''); 
+    
 }
 
 
@@ -109,12 +110,4 @@ searchBTN.addEventListener('click', function(event){
         console.log(productNotFound);
         display2.innerHTML = productNotFound;
     }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    // getting the spinner element
-    document.querySelector('[mySpinner]').style.display = 'none';
-    setTimeout(function () {
-        document.querySelector('[mySpinner]').style.display = 'block';
-    }, 1500);
 });

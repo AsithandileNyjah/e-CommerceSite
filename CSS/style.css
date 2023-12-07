@@ -191,3 +191,10 @@ footer {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+#loader {
+  text-align: center;
+}
+#checkout{
+  margin-top: 5px;
+}
