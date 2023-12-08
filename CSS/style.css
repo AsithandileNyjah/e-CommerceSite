@@ -159,7 +159,16 @@ footer {
     height: 50px;
   }
 
-  #editBTN,
+  .totalBTN {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #4caf50; 
+    color: white;
+    border: none;
+    border-radius: 3px;
+  }
+
+  #editBTN, 
   .delBTN {
     padding: 5px 10px;
     cursor: pointer;
@@ -197,4 +206,45 @@ footer {
 }
 #checkout{
   margin-top: 5px;
+}
+.contactUsTag {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contactUsTag h4 {
+  margin-bottom: 10px;
+}
+
+.contactUsTag p {
+  margin-bottom: 8px;
+}
+.social-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#form {
+  align-items: center;
+  align-self: center;
+}
+
+@media screen and (max-width: 300px) {
+ p {
+  font-size: xx-small;
+ }
+ body {
+  font-size: xx-small;
+ }
+ button {
+  font-size: xx-small;
+  padding: 0%;
+  width: fit-content;
+ }
+ table {
+  font-size: xx-small;
+  width: fit-content;
+ }
 }
