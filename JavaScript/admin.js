@@ -68,8 +68,7 @@ function show (){
               </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"  saveChanges>Save Changes</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  onclick="updateChanges(${index})">Save Changes</button>
                   </div>
                 </div>
               </div>
@@ -146,24 +145,25 @@ function editProduct(index) {
     document.querySelector('[productName]').value = selectedProduct.name;
     document.querySelector('[productPrice]').value = selectedProduct.price;
     document.querySelector('[productDescription]').value = selectedProduct.description;
-    document.querySelector('[productQuantity]').value = selectedProduct.quantity;
+    // document.querySelector('[productQuantity]').value = selectedProduct.quantity;
     document.querySelector('[productImage]').value = selectedProduct.url;
 }
 
 let saveChangesBTN = document.querySelector('[saveChanges]');
 
-saveChangesBTN.addEventListener('click', updateChanges)
+// saveChangesBTN.addEventListener('click', updateChanges)
 
 function updateChanges() {
     selectedProduct.name = document.querySelector('[productName]').value;
     selectedProduct.price = parseInt(document.querySelector('[productPrice]').value);
     selectedProduct.description = document.querySelector('[productDescription]').value;
-    selectedProduct.quantity = parseInt(document.querySelector('[productQuantity]').value);
+    // selectedProduct.quantity = parseInt(document.querySelector('[productQuantity]').value);
     selectedProduct.url = document.querySelector('[productImage]').value;
 
     // Close the modal after updating changes
     let modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
     modal.hide();
+    storedProducts()
 
     // Update the displayed products
     show();

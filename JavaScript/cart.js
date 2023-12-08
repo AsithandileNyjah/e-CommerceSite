@@ -7,8 +7,8 @@ addedToCart.innerHTML += cart.map((item, index) => {
             <td style="padding: 10px;">${index + 1}</td>
             <td style="padding: 10px;">${item.name}</td>
             <td style="padding: 10px;">${item.description}</td>
-            <td style="padding: 10px;">${item.quantity}</td>
-            <td style="padding: 10px;">R${item.price}</td>
+            <td style="padding: 10px; width: 100px" quantityInput><input style="width:20px" type='text' placeholder="${item.quantity}"> <button style="width:50px" onclick="calculateTotalPrice(${index})" totalBTN>Enter</button></td>
+            <td style="padding: 10px;">R${item.price} per</td>
             <td style="padding: 10px;"><button type="button" class="delBTN" data-index="${index}">Delete</button></td>
           </tr>
     `;
@@ -44,7 +44,7 @@ function updateCartDisplay() {
                 <td style="padding: 10px;">${index + 1}</td>
                 <td style="padding: 10px;">${item.name}</td>
                 <td style="padding: 10px;">${item.description}</td>
-                <td style="padding: 10px;">${item.quantity}</td>
+                <td style="padding: 10px;"><input type='number' placeholder="${item.quantity}"></td>
                 <td style="padding: 10px;">R${item.price}</td>
                 <td style="padding: 10px;"><button type="button" class="delBTN" data-index="${index}">Delete</button></td>
             </tr>
@@ -52,30 +52,39 @@ function updateCartDisplay() {
     }).join('');
 }
 
-function duplicatesRemove(cart, newItem) {
-    let existingItemIndex = cart.findIndex((item) => item.name === newItem.name);
+// Select the HTML element with the attribute 'totalBTN' and assign it to the variable 'totalBTN'
+let totalBTN = document.querySelector('[totalBTN]');
 
-    if (existingItemIndex !== -1) {
-        // Duplicate found, update the quantity
-        cart[existingItemIndex].quantity += newItem.quantity;
-    } else {
-        // If no duplicate found, add the new item to the cart
-        cart.push(newItem);
-    }
-}
+let quantityInputs = document.querySelectorAll('[quantityInput] input');
 
+// setting my price display to display the price total after it has been calculated
+let totalPriceDisplay = document.querySelector('[totalPrice]');
 
-// Function to calculate the total price of items in the cart
+// Add an event listener to the 'totalBTN' element, so when it is clicked, the 'calculateTotalPrice' function runs
+totalBTN.addEventListener('click', calculateTotalPrice);
+
+// Create the 'calculateTotalPrice' function
 function calculateTotalPrice() {
+    // Initialize a variable 'total' to store the calculated total price, when the cart is empty, zero will be displayed
     let total = 0;
-    cart.forEach(function (item) {
-        total += item.price ;
+
+    // Loop through cart for each item to
+    cart.forEach(function (item, index) {
+        // Get the quantity input value for the current item and convert it to an integer. If conversion fails, default to 1.
+        let quantity = parseInt(quantityInputs[index].value) || 1;
+
+        // Add the product of item price and quantity to the total
+        total += item.price * quantity;
     });
+
+    // Update the displayed total price on the webpage
+    totalPriceDisplay.textContent = `R${total}`;
+
+    // Return the calculated total (though it's not currently used elsewhere in your code)
     return total;
 }
 
-// Display the price
-let totalPriceDisplay = document.querySelector('[totalPrice]');
+// Display the total price
 totalPriceDisplay.textContent = `R${calculateTotalPrice()}`;
 
 
@@ -91,4 +100,9 @@ function checkout(){
     } else {
         alert('Thank you for shopping with Naturally Kissed!')
     }
+}
+
+function clearCart (){
+    cart = []
+    storeProducts()
 }

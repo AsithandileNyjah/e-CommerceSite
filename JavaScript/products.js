@@ -28,17 +28,27 @@ display.innerHTML = products.map(function(item, index){
     `
 }).join('');
 
-// function to add products to cart
-function addToCart(index){
-    cart.push(products[index])
-    localStorage.setItem('cart', JSON.stringify(cart))
+// function to add products to cart, also using try and catch to alert that the user already has the item in the cart so they must increase the quantity in the cart
+function addToCart(index) {
+    try {
+        if (cart.some(item => item === products[index])) {
+            throw new Error('Item already in cart, increase quantity in cart.');
+        }
+// return the products in the cart
+        cart.push(products[index]);
+        localStorage.setItem('cart', JSON.stringify(cart));
+    } catch (error) {
+        alert(error.message);
+    }
 }
-display.addEventListener('click', function(){
+
+display.addEventListener('click', function() {
     if (event.target.hasAttribute('data-add-to-cart')) {
         addToCart(event.target.getAttribute('data-add-to-cart'));
     }
-})
+});
 
+// declaring the sort button so I can add an event listener to it
 let sortBtn = document.querySelector('[sort]')
 sortBtn.textContent = 'Sort by Price';
 sortBtn.addEventListener('click', function () {
@@ -77,7 +87,7 @@ function sortProductsByPrice() {
     
 }
 
-
+// declaring the search button so I can attach an event listener to it, and declaring where I'm going to display my product not found message
 let searchBTN = document.querySelector('[search]')
 let display2 = document.querySelector('[notFound]')
 
@@ -106,7 +116,7 @@ searchBTN.addEventListener('click', function(event){
             `;
         }).join('');
     } else {
-        // this will display when if the conditions are not met
+        // this will display when if the conditions are not met, which means the product is not found
         console.log(productNotFound);
         display2.innerHTML = productNotFound;
     }
