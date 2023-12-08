@@ -43,12 +43,23 @@
         </nav>
       </div>
       <div>
-        <table>
-          
+        <table style="width: 100%;" cart>
+          <tr style="background-color: #f2f2f2; border-bottom: 2px solid #ddd;">
+            <th style="padding: 10px;">ID</th>
+            <th style="padding: 10px;">Name</th>
+            <th style="padding: 10px;">Description</th>
+            <th style="padding: 10px;">Quantity</th>
+            <th style="padding: 10px;">Price</th>
+            <th style="padding: 10px;">Delete</th>
+          </tr>
         </table>
       </div>
-  
+    </div>
     <div>
+      <div class="container-fluid" id="checkout">
+        Total Price <span totalPrice></span>
+        <button type="button" class="btn btn-primary" data-index checkout>Checkout</button>
+      </div>
         <footer id="footer">
             <ul class="social-icons">
                 <li><a href="#" target="_blank" title="Facebook">F</a></li>

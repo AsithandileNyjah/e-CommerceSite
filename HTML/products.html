@@ -36,21 +36,29 @@
               </li>
             </ul>
             <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" searchInput>
               <button class="btn btn-outline-info" type="submit" search>Search</button>
             </form>
       </div>
           </div>
         </nav>
       </div>
-      <div id="sortBTN" class="container-fluid">
-        <button type="button" class="btn btn-primary" sort>Sort by Price</button>
-      </div>
+        <button id="sortBTN" class="btn btn-primary container-fluid" sort>Sort by Price</button>
       <main class="d-flex justify-content-center" main id="main">
-
+        <div>
+        </div>
+        <div>
+          <div class="container-fluid" id="spinner">
+            <div class="spinner-grow" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
       </main>
-  
-    <div>
+      </div>
+      </div>
+      <div notFound>
+
+      </div>
         <footer id="footer">
             <ul class="social-icons">
                 <li><a href="#" target="_blank" title="Facebook">F</a></li>

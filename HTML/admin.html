@@ -43,19 +43,50 @@
         </nav>
       </div>
       <section id="addProduct">
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Adding A New Product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
         <h3>Add New Product</h3> 
         <div>
-          <p> <input type="text" namePro> Name</p>
-          <p> <input type="text" price> Price</p>
-          <p> <input type="text" description> Description</p>
-          <p> <input type="text" image> Image URL</p>
-          <button addItems>Add Product</button>
+          <p> <input type="text" placeholder="Name" namePro> Name</p>
+          <p> <input type="text" placeholder="Price" price> Price</p>
+          <p> <input type="text" placeholder="Description" description> description</p>
+          <p> <input type="text" placeholder="Image URL" image> Image URL</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button addItems>Add Product</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
         </div>
       </section>
+      <h3 class="container-fluid">Product List</h3>
       <div class="container-fluid" products>
         <table>
 
+          <div editModal>
+
+          </div>
         </table>
+      </div>
+      <div class="container-fluid" id="spinner">
+        <div class="spinner-grow" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
   
     <div>
