@@ -1,6 +1,6 @@
 
 let message = document.querySelector('[message]').value;
-let name = document.querySelector('[name]').value;
+let name = document.querySelector('[submission3]').value;
 let email = document.querySelector('[email]').value;
 let submitBTN = document.querySelector('[send]');
 
@@ -11,6 +11,6 @@ submitBTN.addEventListener('click', function () {
 
 function clearFRM() {
   document.querySelector('[message]').value = '';
-  document.querySelector('[name]').value = '';
+  document.querySelector('[submission3]').value = '';
   document.querySelector('[email]').value = '';
 }
