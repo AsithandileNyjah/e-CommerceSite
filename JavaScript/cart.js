@@ -95,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Declaring the checkout button and the html attributes to target it, adding the event listener to run the function when clicked
     let checkoutBTN = document.querySelector('[checkout]')
     checkoutBTN.addEventListener('click', checkout)
-    checkoutBTN.addEventListener('click', clearCart)
 
     function checkout() {
         // conditional statement to alert the user when they checkout
@@ -106,8 +105,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-
-// function to clear the cart, this will be attached to the checkout button as the event handler
-function clearCart(){
-    cart.length = 0
-}
