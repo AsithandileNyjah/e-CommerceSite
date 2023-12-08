@@ -7,7 +7,7 @@ addedToCart.innerHTML += cart.map((item, index) => {
             <td style="padding: 10px;">${index + 1}</td>
             <td style="padding: 10px;">${item.name}</td>
             <td style="padding: 10px;">${item.description}</td>
-            <td style="padding: 10px; width: 100px" quantityInput><input style="width:20px" type='text' placeholder="${item.quantity}"> <button style="width:50px" onclick="calculateTotalPrice(${index})" totalBTN>Enter</button></td>
+            <td style="padding: 10px; width: 100px" quantityInput><input style="width:20px" type='text' placeholder="${item.quantity}"> <button style="width:50px" onclick="calculateTotalPrice(${index})" totalBTN >Enter</button></td>
             <td style="padding: 10px;">R${item.price} per</td>
             <td style="padding: 10px;"><button type="button" class="delBTN" data-index="${index}">Delete</button></td>
           </tr>
@@ -102,7 +102,8 @@ function checkout(){
     }
 }
 
-function clearCart (){
-    cart = []
-    storeProducts()
+checkoutBTN.addEventListener('click', clearCart);
+
+function clearCart() {
+  cart.splice(cart.length); // Remove all elements starting from index 0
 }
