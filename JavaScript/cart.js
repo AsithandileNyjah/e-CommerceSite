@@ -7,7 +7,7 @@ addedToCart.innerHTML += cart.map((item, index) => {
             <td style="padding: 10px;">${index + 1}</td>
             <td style="padding: 10px;">${item.name}</td>
             <td style="padding: 10px;">${item.description}</td>
-            <td style="padding: 10px; width: 100px" quantityInput><input style="width:20px" type='text' placeholder="${item.quantity}"> <button style="width:50px" onclick="calculateTotalPrice(${index})" totalBTN>Enter</button></td>
+            <td style="padding: 10px; width: 100px" quantityInput><input style="width:20px" type='text' placeholder="${item.quantity}"> <button style="width:50px" onclick="calculateTotalPrice(${index})" class="totalBTN" totalBTN >Enter</button></td>
             <td style="padding: 10px;">R${item.price} per</td>
             <td style="padding: 10px;"><button type="button" class="delBTN" data-index="${index}">Delete</button></td>
           </tr>
@@ -32,6 +32,7 @@ addedToCart.addEventListener('click', function (event) {
     if (target.classList.contains('delBTN')) {
         const index = target.getAttribute('data-index');
         del(index);
+        calculateTotalPrice()
         storeProducts();
         updateCartDisplay();
     }
@@ -53,7 +54,7 @@ function updateCartDisplay() {
 }
 
 // Select the HTML element with the attribute 'totalBTN' and assign it to the variable 'totalBTN'
-let totalBTN = document.querySelector('[totalBTN]');
+let totalBTN = document.querySelector('[totalBTN]')
 
 let quantityInputs = document.querySelectorAll('[quantityInput] input');
 
@@ -90,19 +91,23 @@ totalPriceDisplay.textContent = `R${calculateTotalPrice()}`;
 
 // checkout button function
 
-let checkoutBTN = document.querySelector('[checkout]')
+document.addEventListener('DOMContentLoaded', function () {
+    // Declaring the checkout button and the html attributes to target it, adding the event listener to run the function when clicked
+    let checkoutBTN = document.querySelector('[checkout]')
+    checkoutBTN.addEventListener('click', checkout)
+    checkoutBTN.addEventListener('click', clearCart)
 
-checkoutBTN.addEventListener('click', checkout)
-
-function checkout(){
-    if(cart.length ===0){
-        alert('Your Cart Is Empty')
-    } else {
-        alert('Thank you for shopping with Naturally Kissed!')
+    function checkout() {
+        // conditional statement to alert the user when they checkout
+        if (cart.length === 0) {
+            alert('Your Cart Is Empty') //it will say this when the cart is empty
+        } else {
+            alert('Thank you for shopping with Naturally Kissed!') //it will say this when the cart has items when checking out
+        }
     }
-}
+});
 
-function clearCart (){
-    cart = []
-    storeProducts()
+// function to clear the cart, this will be attached to the checkout button as the event handler
+function clearCart(){
+    cart.length = 0
 }
